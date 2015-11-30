@@ -1,14 +1,14 @@
 var FooterView = React.createClass({
 	displayName: "FooterView",
 
+	/*
+  Lifecycle.
+  */
 	getInitialState: function () {
 		return { now: new Date().toLocaleString() };
 	},
 	componentDidMount: function () {
 		setInterval(this.updateTime, this.props.pollInterval);
-	},
-	updateTime: function () {
-		this.setState(this.getInitialState());
 	},
 	render: function () {
 		return React.createElement(
@@ -32,8 +32,15 @@ var FooterView = React.createClass({
 					{ href: "http://tothsolutions.com/", target: "_blank" },
 					"Toth Solutions, LLC."
 				)
-			)
+			),
+			"  Rendered by React"
 		);
+	},
+	/*
+  Class Specific Methods.
+  */
+	updateTime: function () {
+		this.setState(this.getInitialState());
 	}
 });
 
@@ -41,6 +48,9 @@ ReactDOM.render(React.createElement(FooterView, { pollInterval: 1000 }), documen
 var LoadingView = React.createClass({
 	displayName: "LoadingView",
 
+	/*
+  Lifecycle.
+  */
 	render: function () {
 		return React.createElement(
 			"div",
@@ -53,23 +63,14 @@ var LoadingView = React.createClass({
     NewListingsView = React.createClass({
 	displayName: "NewListingsView",
 
+	/*
+  Lifecycle.
+  */
 	componentDidMount: function () {
 		this.loadNewListings();
 	},
 	getInitialState: function () {
 		return {};
-	},
-	loadNewListings: function () {
-		$.ajax({
-			url: 'http://www.alesha911.com/content/misc/TestHarness/JSONP/listings.ashx',
-			dataType: 'jsonp',
-			jsonp: 'callback',
-			cache: false,
-			success: this.newListingsLoaded
-		});
-	},
-	newListingsLoaded: function (results) {
-		this.setState({ results: results });
 	},
 	render: function () {
 		if (this.state.results === undefined) {
@@ -108,7 +109,8 @@ var LoadingView = React.createClass({
 				" NEW LISTINGS in my area ",
 				React.createElement(
 					"span",
-					{ className: "badge" },
+					{
+						className: "badge" },
 					this.state.results.length
 				)
 			),
@@ -118,28 +120,34 @@ var LoadingView = React.createClass({
 				listings
 			)
 		);
+	},
+	/*
+  Class Specific Methods.
+  */
+	loadNewListings: function () {
+		$.ajax({
+			url: 'http://www.alesha911.com/content/misc/TestHarness/JSONP/listings.ashx',
+			dataType: 'jsonp',
+			jsonp: 'callback',
+			cache: false,
+			success: this.newListingsLoaded
+		});
+	},
+	newListingsLoaded: function (results) {
+		this.setState({ results: results });
 	}
 }),
     HomeView = React.createClass({
 	displayName: "HomeView",
 
+	/*
+  Lifecycle.
+  */
 	componentDidMount: function () {
 		this.loadDetailsFromServer();
 	},
 	getInitialState: function () {
 		return {};
-	},
-	loadDetailsFromServer: function () {
-		$.ajax({
-			url: 'api/listing',
-			dataType: 'json',
-			json: true,
-			cache: false,
-			success: this.detailsLoaded
-		});
-	},
-	detailsLoaded: function (details) {
-		this.setState({ details: details });
 	},
 	render: function () {
 		if (this.state.details === undefined) {
@@ -226,6 +234,21 @@ var LoadingView = React.createClass({
 				)
 			)
 		);
+	},
+	/*
+  Class Specific Methods.
+  */
+	loadDetailsFromServer: function () {
+		$.ajax({
+			url: 'api/listing',
+			dataType: 'json',
+			json: true,
+			cache: false,
+			success: this.detailsLoaded
+		});
+	},
+	detailsLoaded: function (details) {
+		this.setState({ details: details });
 	}
 });
 

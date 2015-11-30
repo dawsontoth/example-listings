@@ -16,7 +16,8 @@ var FooterView = React.createClass({
 				All Rights Reserved.&nbsp;
 					<span className="hidden-xs">
 						Site Designed by: <a href="http://tothsolutions.com/" target="_blank">Toth Solutions, LLC.</a>
-					</span>
+					</span>&nbsp;
+				Rendered by React
 			</div>
 		);
 	},
