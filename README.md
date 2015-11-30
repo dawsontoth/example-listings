@@ -17,8 +17,20 @@ The following should appear in your terminal:
 	angular listening at http://localhost:8080/
 	react listening at http://localhost:8081/
 
+## Optimizations
+
 To compile React:
 
 	npm install --global babel-cli
 	cd react
 	babel app --out-file compiled/app.js
+	
+Then update the index.html:
+
+1. Remove these:
+	<script src="vendor/browser.js"></script>
+	<script type="text/babel" src="app/home.jsx"></script>
+	<script type="text/babel" src="app/footer.jsx"></script>
+
+2. Uncomment this:
+	<script src="compiled/app.js"></script>
