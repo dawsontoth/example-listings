@@ -53,13 +53,12 @@ angular
 
 		// But it won't, because the scope doesn't know it was updated unless we manually tell it:
 		//setInterval(function() {
-		//	$rootScope.$apply(function() {
-		//		$rootScope.now = new Date();
-		//	});
+		//	$rootScope.now = new Date();
+		//	$rootScope.$digest();
 		//}, 1000);
 
 		// Alternatively, we can use the built in service $interval, which updates the scope for us:
-		//$interval(function() {
-		//	$rootScope.now = new Date();
-		//}, 1000);
+		$interval(function() {
+			$rootScope.now = new Date();
+		}, 1000);
 	});

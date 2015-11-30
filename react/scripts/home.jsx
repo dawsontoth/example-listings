@@ -1,4 +1,7 @@
 var LoadingView = React.createClass({
+		/*
+		 Lifecycle.
+		 */
 		render: function() {
 			return (
 				<div className="loading">
@@ -8,24 +11,16 @@ var LoadingView = React.createClass({
 			);
 		}
 	}),
+
 	NewListingsView = React.createClass({
+		/*
+		 Lifecycle.
+		 */
 		componentDidMount: function() {
 			this.loadNewListings();
 		},
 		getInitialState: function() {
 			return {};
-		},
-		loadNewListings: function() {
-			$.ajax({
-				url: 'http://www.alesha911.com/content/misc/TestHarness/JSONP/listings.ashx',
-				dataType: 'jsonp',
-				jsonp: 'callback',
-				cache: false,
-				success: this.newListingsLoaded
-			})
-		},
-		newListingsLoaded: function(results) {
-			this.setState({ results: results });
 		},
 		render: function() {
 			if (this.state.results === undefined) {
@@ -55,33 +50,41 @@ var LoadingView = React.createClass({
 			return (
 				<div>
 					<h3 className="collapses" data-toggle="collapse" data-target="#newListings">
-						<span className="glyphicon"/> NEW LISTINGS in my area <span className="badge">{ this.state.results.length }</span>
+						<span className="glyphicon"/> NEW LISTINGS in my area <span
+						className="badge">{ this.state.results.length }</span>
 					</h3>
 					<div className="collapse in" id="newListings">
 						{ listings }
 					</div>
 				</div>
 			);
+		},
+		/*
+		 Class Specific Methods.
+		 */
+		loadNewListings: function() {
+			$.ajax({
+				url: 'http://www.alesha911.com/content/misc/TestHarness/JSONP/listings.ashx',
+				dataType: 'jsonp',
+				jsonp: 'callback',
+				cache: false,
+				success: this.newListingsLoaded
+			})
+		},
+		newListingsLoaded: function(results) {
+			this.setState({ results: results });
 		}
 	}),
+
 	HomeView = React.createClass({
+		/*
+		 Lifecycle.
+		 */
 		componentDidMount: function() {
 			this.loadDetailsFromServer();
 		},
 		getInitialState: function() {
 			return {};
-		},
-		loadDetailsFromServer: function() {
-			$.ajax({
-				url: 'api/listing',
-				dataType: 'json',
-				json: true,
-				cache: false,
-				success: this.detailsLoaded
-			})
-		},
-		detailsLoaded: function(details) {
-			this.setState({ details: details });
 		},
 		render: function() {
 			if (this.state.details === undefined) {
@@ -131,6 +134,21 @@ var LoadingView = React.createClass({
 
 				</div>
 			);
+		},
+		/*
+		 Class Specific Methods.
+		 */
+		loadDetailsFromServer: function() {
+			$.ajax({
+				url: 'api/listing',
+				dataType: 'json',
+				json: true,
+				cache: false,
+				success: this.detailsLoaded
+			})
+		},
+		detailsLoaded: function(details) {
+			this.setState({ details: details });
 		}
 	});
 

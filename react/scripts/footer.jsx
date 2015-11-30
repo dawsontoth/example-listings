@@ -1,12 +1,12 @@
 var FooterView = React.createClass({
+	/*
+	 Lifecycle.
+	 */
 	getInitialState: function() {
 		return { now: new Date().toLocaleString() };
 	},
 	componentDidMount: function() {
 		setInterval(this.updateTime, this.props.pollInterval);
-	},
-	updateTime: function() {
-		this.setState(this.getInitialState());
 	},
 	render: function() {
 		return (
@@ -19,6 +19,12 @@ var FooterView = React.createClass({
 					</span>
 			</div>
 		);
+	},
+	/*
+	 Class Specific Methods.
+	 */
+	updateTime: function() {
+		this.setState(this.getInitialState());
 	}
 });
 
