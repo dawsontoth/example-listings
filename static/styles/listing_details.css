@@ -1,0 +1,18 @@
+.listing-details .new_listing {
+  padding: 5px 0;
+  display: block;
+  text-decoration: none;
+}
+.listing-details .new_listing:hover {
+  text-decoration: none;
+}
+.listing-details dt {
+  font-size: large;
+  color: #666666;
+}
+.listing-details dd {
+  font-size: x-large;
+}
+.listing-details dd .glyphicon {
+  font-size: large;
+}

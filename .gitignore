@@ -1,0 +1,10 @@
+build
+build.log
+tmp
+._*
+.DS_Store
+.idea
+.settings
+node_modules
+bin
+bower_components

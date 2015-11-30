@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Listings</title>
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet" href="styles/common.css"/>
+	<link rel="stylesheet" href="styles/flash.css"/>
+	<link rel="stylesheet" href="styles/listing_details.css"/>
+
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-route/angular-route.js"></script>
+	<script src="/bower_components/angular-flash/dist/angular-flash.js"></script>
+	<script src="/bower_components/ng-lodash/build/ng-lodash.js"></script>
+
+	<script src="app.js"></script>
+
+	<script src="directives/index.js"></script>
+
+	<script src="filters/index.js"></script>
+
+	<script src="services/_http.js"></script>
+	<script src="services/base64.js"></script>
+	<script src="services/auth.js"></script>
+	<script src="services/options.js"></script>
+	<script src="services/listing.js"></script>
+
+	<script src="home/controller.js"></script>
+	<script src="listing/controller.js"></script>
+
+</head>
+<body ng-app="app">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+	your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="container-fluid ng-cloak" id="container">
+
+	<div id="header">
+		<h1 class="container">
+			<span class="glyphicon glyphicon-home"></span> My Listing Service
+		</h1>
+	</div>
+	<ng-flash></ng-flash>
+
+	<div id="main-view" ng-view>
+		<ng-loading></ng-loading>
+	</div>
+
+	<div id="footer">
+		Copyright © {{ now | date : 'medium' }},
+		<a href="http://www.foo.com/" target="_blank">My Listing Service, Inc.</a>
+		All Rights Reserved.
+			<span class="hidden-xs">
+				Site Designed by:
+				<a href="http://tothsolutions.com/" target="_blank">Toth Solutions, LLC.</a>
+			</span>
+	</div>
+</div>
+
+</body>
+</html>
