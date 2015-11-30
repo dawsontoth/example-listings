@@ -12,13 +12,13 @@ angular
 		$routeProvider
 			.when('/', {
 				controller: 'HomeController',
-				templateUrl: 'home/view.html',
+				templateUrl: 'pages/home/view.html',
 				controllerAs: 'vm'
 			})
 
 			.when('/listing/:address', {
 				controller: 'ListingController',
-				templateUrl: 'listing/view.html',
+				templateUrl: 'pages/listing/view.html',
 				controllerAs: 'vm'
 			})
 

@@ -21,16 +21,16 @@ The following should appear in your terminal:
 
 To compile React:
 
-	npm install --global babel-cli
+	npm install -g babel-cli
 	cd react
-	babel app --out-file compiled/app.js
+	babel scripts --out-file compiled/app.js
 	
 Then update the index.html:
 
 1. Remove these:
 	<script src="vendor/browser.js"></script>
-	<script type="text/babel" src="app/home.jsx"></script>
-	<script type="text/babel" src="app/footer.jsx"></script>
+	<script type="text/babel" src="scripts/home.jsx"></script>
+	<script type="text/babel" src="scripts/footer.jsx"></script>
 
 2. Uncomment this:
 	<script src="compiled/app.js"></script>
