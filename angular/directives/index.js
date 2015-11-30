@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('app')
+	
 	.directive('ngLoading', function() {
 		return {
 			restrict: 'E',
@@ -8,6 +9,7 @@ angular.module('app')
 			templateUrl: '/directives/loading.html'
 		};
 	})
+	
 	.directive('ngFlash', function() {
 		return {
 			restrict: 'E',
@@ -15,6 +17,7 @@ angular.module('app')
 			templateUrl: '/directives/flash.html'
 		};
 	})
+	
 	.directive('ngConfirmClick', function() {
 		return {
 			priority: -1,
